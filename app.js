@@ -23,7 +23,7 @@ Twitter.stream('statuses/filter', {track: 'defiantly'}, function (stream) {
     console.log(tweet.text)
 
     // build the reply object
-    let statusObj = {status: '@' + tweet.user.screen_name + "I think you mean 'definitely'"}
+    let statusObj = {status: '@' + tweet.user.screen_name + " I think you mean 'definitely'"}
 
     // call the post function to tweet something
     Twitter.post('statuses/update', statusObj, function (error, tweetReply, response) {
