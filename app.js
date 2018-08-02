@@ -19,16 +19,21 @@ const Twitter = new TwitterPackage(keys)
 Twitter.stream('statuses/filter', {track: 'defiantly'}, function (stream) {
   // ... when we get tweet data...
   stream.on('data', function (tweet) {
+    // the if statement will ignore retweets of tweets with our tracked string/hashtag
     if (!tweet.retweeted_status) {
     // print out the text of the tweet that came in
       console.log(tweet.text)
-      let nameID = tweet.id_str
+      // getting the id of the Tweet to reply to
+      let nameId = tweet.id_str
+      // getting the twitter handle of the user to reply to
       let name = tweet.user.screen_name
-      // build the reply object
+      // build the reply
       let statusObj = '@' + name + " I think you mean 'definitely'"
+      // params are what define the reply. status gets statusObj which is the reply to the user
+      // in_reply_to_status_id: nameID is saying we are replying to this tweet with an id of `nameID`
       let params = {
         status: statusObj,
-        in_reply_to_status_id: nameID
+        in_reply_to_status_id: nameId
       }
       // call the post function to tweet something
       Twitter.post('statuses/update', params, function (error, tweetReply, response) {
