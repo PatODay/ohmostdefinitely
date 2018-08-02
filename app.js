@@ -19,22 +19,24 @@ const Twitter = new TwitterPackage(keys)
 Twitter.stream('statuses/filter', {track: 'defiantly'}, function (stream) {
   // ... when we get tweet data...
   stream.on('data', function (tweet) {
+    if (!tweet.retweeted_status) {
     // print out the text of the tweet that came in
-    console.log(tweet.text)
+      console.log(tweet.text)
 
-    // build the reply object
-    let statusObj = {status: '@' + tweet.user.screen_name + " I think you mean 'definitely'"}
+      // build the reply object
+      let statusObj = {status: '@' + tweet.user.screen_name + " I think you mean 'definitely'"}
 
-    // call the post function to tweet something
-    Twitter.post('statuses/update', statusObj, function (error, tweetReply, response) {
+      // call the post function to tweet something
+      Twitter.post('statuses/update', statusObj, function (error, tweetReply, response) {
       // if we get an error print it out
-      if (error) {
-        console.log(error)
-      }
+        if (error) {
+          console.log(error)
+        }
 
-      // print the text of the tweet we sent out
-      console.log(tweetReply.text)
-    })
+        // print the text of the tweet we sent out
+        console.log(tweetReply.text)
+      })
+    }
   })
 
   // ... when we get an error...
