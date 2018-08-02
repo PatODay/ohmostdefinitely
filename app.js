@@ -22,12 +22,16 @@ Twitter.stream('statuses/filter', {track: 'defiantly'}, function (stream) {
     if (!tweet.retweeted_status) {
     // print out the text of the tweet that came in
       console.log(tweet.text)
-
+      let nameID = tweet.id_str
+      let name = tweet.user.screen_name
       // build the reply object
-      let statusObj = {status: '@' + tweet.user.screen_name + " I think you mean 'definitely'"}
-
+      let statusObj = '@' + name + " I think you mean 'definitely'"
+      let params = {
+        status: statusObj,
+        in_reply_to_status_id: nameID
+      }
       // call the post function to tweet something
-      Twitter.post('statuses/update', statusObj, function (error, tweetReply, response) {
+      Twitter.post('statuses/update', params, function (error, tweetReply, response) {
       // if we get an error print it out
         if (error) {
           console.log(error)
