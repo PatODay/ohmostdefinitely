@@ -16,10 +16,10 @@ This app will reply to any Twitter user who uses the word `defiantly` with `I th
 
 # Resources Used
 
-[Creating a Simple Twitter Bot in Node.js](http://techknights.org/workshops/nodejs-twitterbot/)
-[Build a Twitter Bot in half an hour with Node.js and Heroku](https://medium.com/@mattpopovich/how-to-build-and-deploy-a-simple-twitter-bot-super-fast-with-node-js-and-heroku-7b322dbb5dd3)
-[Twitter Developer Docs](https://developer.twitter.com/en/docs)
-[Stack Overflow](https://stackoverflow.com/)
+  * [Creating a Simple Twitter Bot in Node.js](http://techknights.org/workshops/nodejs-twitterbot/)
+  * [Build a Twitter Bot in half an hour with Node.js and Heroku](https://medium.com/@mattpopovich/how-to-build-and-deploy-a-simple-twitter-bot-super-fast-with-node-js-and-heroku-7b322dbb5dd3)
+  * [Twitter Developer Docs](https://developer.twitter.com/en/docs)
+  * [Stack Overflow](https://stackoverflow.com/)
 
 # Development Process
 
