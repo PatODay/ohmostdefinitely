@@ -1,5 +1,6 @@
 'use strict'
 
+// Requiring the 'dotenv' npm package
 require('dotenv').load()
 // Requiring twitter package
 const TwitterPackage = require('twitter')
@@ -11,7 +12,12 @@ const keys = {
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 }
 
-// console.log(process.env);
+const phrases = [
+  " I think you mean 'definitely'",
+  " Do you mean 'definitely'?",
+  " You probably meant 'definitely'",
+  " Did you mean to say 'definitely'?"
+]
 
 const Twitter = new TwitterPackage(keys)
 
@@ -27,8 +33,10 @@ Twitter.stream('statuses/filter', {track: 'defiantly'}, function (stream) {
       let nameId = tweet.id_str
       // getting the twitter handle of the user to reply to
       let name = tweet.user.screen_name
+      // calculate the random index
+      let randomIndex = Math.round(Math.random() * phrases.length)
       // build the reply
-      let statusObj = '@' + name + " I think you mean 'definitely'"
+      let statusObj = '@' + name + phrases[randomIndex]
       // params are what define the reply. status gets statusObj which is the reply to the user
       // in_reply_to_status_id: nameID is saying we are replying to this tweet with an id of `nameID`
       let params = {
